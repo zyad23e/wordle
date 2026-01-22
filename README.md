@@ -1,52 +1,61 @@
-# Full-Stack Wordle Web Application
+# Wordle Web — Full-Stack Application
 
-A full-stack Wordle-style web application built with a Java Spring Boot backend and a lightweight React frontend.  
-The project emphasizes backend-driven game logic, secure API design, and deterministic state handling, with the frontend acting as a thin client that renders server-authoritative results.
+A full-stack Wordle-style game built with a **Spring Boot backend** and a **React (Vite) frontend**.  
+This project began as a simple college assignment, but was later **rebuilt and significantly extended** into a complete web application with a real UI, backend-enforced game logic, user accounts, and persistent statistics.
 
-This application is a **ground-up rebuild** of a prior academic Wordle project, redesigned to demonstrate improved architecture, clarity, and full-stack ownership.
+The backend is the source of truth for gameplay rules, dictionary validation, daily puzzle selection, and stat tracking. The frontend focuses on clean interaction, keyboard-driven gameplay, and presenting results to the user.
 
 ---
 
-## Tech Stack
-
-### Backend
-- Java 17
-- Spring Boot
-- Spring Security
-- MySQL
-- JPA / Hibernate
-- RESTful API design
-- File-based word dictionaries
-
-### Frontend
-- React (Vite)
-- Functional components with hooks
-- Keyboard and UI-driven input
-- Server-authoritative game state
+## Project Structure
 
 ---
 
 ## Features
 
-- Daily Wordle-style puzzle with deterministic answer rotation
-- Secure backend endpoints enforced with Spring Security
-- Guess validation against a dictionary word list
-- Server-side evaluation of guesses (correct / present / absent)
-- React-based 6×5 grid rendering driven entirely by API responses
-- Development-only endpoint for answer inspection
+- **Daily Wordle gameplay**
+  - 5-letter words, 6 attempts
+  - Deterministic daily puzzle shared by all users
+  - Duplicate-letter handling matches official Wordle rules
+
+- **Backend-enforced game logic**
+  - Guess validation and evaluation handled server-side
+  - Invalid dictionary words rejected by the API
+  - Server determines win/loss and game completion
+
+- **User authentication**
+  - Register, login, logout
+  - Session-based authentication using Spring Security
+  - Cookie-based sessions with credentialed API requests
+
+- **Persistent player statistics**
+  - Games played and wins
+  - Current and max win streak
+  - Win distribution (1–6 guesses)
+  - Stats update once per daily puzzle to prevent duplicates
 
 ---
 
-## Backend API Overview
+## Tech Stack
 
-### `GET /api/puzzle`
-Returns metadata for the current daily puzzle.
+**Backend**
+- Java
+- Spring Boot (Web, Security, Data JPA)
+- Hibernate
+- MySQL
+- Maven
 
-### `POST /api/guess`
-Submits a guess and returns per-letter evaluation results.
+**Frontend**
+- React
+- Vite
+- JavaScript
+- CSS
 
-**Request**
-```json
-{
-  "guess": "CRANE"
-}
+---
+
+## Local Development
+
+### Prerequisites
+- Java (project specifies Java 25 in `pom.xml`)
+- Node.js
+- MySQL
