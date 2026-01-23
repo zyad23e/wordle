@@ -34,8 +34,15 @@ public class StatsController {
 
     @GetMapping
     public StatsResponse getStats(Authentication auth) {
-        User user = users.findByUsername(auth.getName()).orElseThrow();
-        UserStats s = statsRepo.findById(user.getId()).orElseThrow();
+        if (auth == null) {
+            return new StatsResponse(0,0,0,0,0,0,0,0,0,0);
+        }
+
+        User user = users.findByUsername(auth.getName())
+                .orElseThrow(() -> new RuntimeException("User not found: " + auth.getName()));
+
+        UserStats s = statsRepo.findById(user.getId())
+                .orElseThrow(() -> new RuntimeException("Stats not found for userId: " + user.getId()));
 
         return new StatsResponse(
                 s.getGamesPlayed(),
@@ -50,4 +57,5 @@ public class StatsController {
                 s.getWinIn6()
         );
     }
+
 }
