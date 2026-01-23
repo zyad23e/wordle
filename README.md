@@ -1,5 +1,7 @@
 # Wordle Web — Full-Stack Application
 
+Live demo: https://wordle-jmny3s1m9-zyad23es-projects.vercel.app/
+
 A full-stack Wordle-style game built with a **Spring Boot backend** and a **React (Vite) frontend**.  
 This project began as a simple college assignment, but was later **rebuilt and significantly extended** into a complete web application with a real UI, backend-enforced game logic, user accounts, and persistent statistics.
 
