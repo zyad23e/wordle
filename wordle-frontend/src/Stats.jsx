@@ -14,7 +14,6 @@ export default function Stats({ onClose }) {
       setError("");
       try {
         const res = await fetch(`${API_BASE}/api/stats`, {
-          credentials: "include",
         });
 
         if (!res.ok) {

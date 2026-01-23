@@ -15,7 +15,6 @@ export default function Root() {
     async function checkSession() {
       try {
         const res = await fetch(`${API_BASE}/api/me`, {
-          credentials: "include",
         });
 
         if (cancelled) return;

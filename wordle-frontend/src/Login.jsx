@@ -25,7 +25,6 @@ export default function Login({ onLoginSuccess }) {
       const res = await fetch(`${API_BASE}${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
         body: JSON.stringify({
           username: username.trim(),
           password,
@@ -49,7 +48,6 @@ export default function Login({ onLoginSuccess }) {
         const loginRes = await fetch(`${API_BASE}/api/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          credentials: "include",
           body: JSON.stringify({
             username: username.trim(),
             password,

@@ -49,7 +49,6 @@ export default function App() {
   async function loadGame() {
     try {
       const res = await fetch(`${API_BASE}/api/puzzle`, {
-        credentials: "include",
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
@@ -98,7 +97,6 @@ export default function App() {
       const res = await fetch(`${API_BASE}/api/guess`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
         body: JSON.stringify({
           puzzleId: puzzleRef.current.puzzleId,
           guess,
@@ -183,7 +181,6 @@ export default function App() {
   async function logout() {
     await fetch(`${API_BASE}/api/auth/logout`, {
       method: "POST",
-      credentials: "include",
     });
     window.location.reload();
   }
